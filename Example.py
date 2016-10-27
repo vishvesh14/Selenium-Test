@@ -1,0 +1,73 @@
+# __author__ = 'Bestla'
+import time
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.ui import Select
+
+driver = webdriver.Firefox()
+driver.get("http://www.seleniumframework.com/Practiceform/")
+assert "Selenium Framework" in driver.title
+driver.maximize_window()
+
+def ClearText():
+    text_box_elem = driver.find_element_by_xpath("//textarea[@id='vfb-10']")   #Enter in text box
+    text_box_elem.clear()
+    text_box_elem.send_keys("Testing..")
+    text_elem = driver.find_element_by_xpath("//input[@id='vfb-9']")           #Enter in Text
+    text_elem.clear()
+    text_elem.send_keys("Testing")
+
+def CheckBoxes():
+    checkboxes = []
+    checkboxes=driver.find_elements_by_xpath("//input[@type='checkbox']")
+    for check in checkboxes:
+        check.click()
+
+    #check_boxes1 = driver.find_element_by_id("vfb-6-0").click()                        #Tick Checkboxes
+    #check_boxes2 = driver.find_element_by_id("vfb-6-1").click()
+    #check_boxes3 = driver.find_element_by_id("vfb-6-2").click()
+
+    #if (check_boxes1.is_selected()):
+       # print("Checkbox is selected..now deselecting")
+        #check_boxes1.click()
+    #else:
+       # print("Checkbox is not selected..now selecting it")
+        #check_boxes1.click()
+
+def RadioButtons():
+    """radiobuttons = []                                                                   #Loop for going through each radio button
+    radiobuttons = driver.find_elements_by_xpath("//input[@name='vfb-7']")
+    for radio in radiobuttons:
+        radio.click()
+    time.sleep(15)"""
+
+    radiobutton = driver.find_element_by_xpath("//input[@id='vfb-7-3']")
+    radiobutton.click()
+
+def calender():
+    cal=driver.find_element_by_xpath("//input[@name='vfb-8']")
+    cal.click()
+    cal= driver.find_element_by_xpath(".//*[@id='ui-datepicker-div']/div/a[2]/span")    # Click to go to next month
+    cal.click()
+    cal= driver.find_element_by_xpath(".//*[@id='ui-datepicker-div']/div/a[1]/span")    # Click to go the previous month
+    cal.click()
+    cal = driver.find_element_by_xpath(".//*[@id='ui-datepicker-div']/table/tbody/tr[2]/td[2]/a")
+    cal.click()
+
+def URL():                                                                                  #Enter URL
+    url_text = driver.find_element_by_xpath("//input[@id='vfb-11']")
+    url_text.clear()
+    url_text.send_keys("http://www.gptoday.com")
+
+dropdown= driver.find_element_by_xpath ("//select[@id='vfb-12']")                        #Selecting Options from drop down
+Select(dropdown).select_by_value("Option 2")
+dropdown_count= driver.find_element_by_tag_name("options")
+# print len(dropdown_count)
+
+
+a=ClearText()
+b=CheckBoxes()
+c=RadioButtons()
+d=calender()
+e=URL()
+# f= DropDown()
