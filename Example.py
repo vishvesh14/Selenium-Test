@@ -59,10 +59,20 @@ def URL():                                                                      
     url_text.clear()
     url_text.send_keys("http://www.gptoday.com")
 
-dropdown= driver.find_element_by_xpath ("//select[@id='vfb-12']")                        #Selecting Options from drop down
+dropdown = driver.find_element_by_xpath ("//select[@id='vfb-12']")                        #Selecting Options from drop down
 Select(dropdown).select_by_value("Option 2")
 dropdown_count= driver.find_element_by_tag_name("options")
 # print len(dropdown_count)
+
+def verification():
+    t = driver.find_element_by_xpath("//input[@id='vfb-3']").click()
+    user_input = int (input("Enter only 2 digit number: "))         //Entering Number in field
+    driver.find_element_by_id("vfb-4").click()                      //Clicking on Submit button
+
+    if (user_input > 9) and (user_input < 100):
+    else:
+        driver
+
 
 
 a=ClearText()
