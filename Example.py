@@ -67,11 +67,14 @@ dropdown_count= driver.find_element_by_tag_name("options")
 def verification():
     t = driver.find_element_by_xpath("//input[@id='vfb-3']").click()
     user_input = int (input("Enter only 2 digit number: "))         //Entering Number in field
-    driver.find_element_by_id("vfb-4").click()                      //Clicking on Submit button
+    actual_message =
 
     if (user_input > 9) and (user_input < 100):
+        driver.find_element_by_id("vfb-4").click()
+        print("Success")
     else:
-        driver
+        driver.find_element_by_id("vfb-4").click()
+        driver.find_element_by_xpath(".//*[@id='item-vfb-2']/ul/li[1]/span/label[1]").text
 
 
 
