@@ -9,6 +9,7 @@ driver.get("http://www.seleniumframework.com/Practiceform/")
 assert "Selenium Framework" in driver.title
 driver.maximize_window()
 
+'''
 def ClearText():
     text_box_elem = driver.find_element_by_xpath("//textarea[@id='vfb-10']")   #Enter in text box
     text_box_elem.clear()
@@ -61,13 +62,15 @@ def URL():                                                                      
 
 dropdown = driver.find_element_by_xpath ("//select[@id='vfb-12']")                        #Selecting Options from drop down
 Select(dropdown).select_by_value("Option 2")
-dropdown_count= driver.find_element_by_tag_name("options")
+dropdown_count= driver.find_element_by_tag_name("options")'''
 # print len(dropdown_count)
 
 def verification():
     t = driver.find_element_by_xpath("//input[@id='vfb-3']").click()
-    user_input = int (input("Enter only 2 digit number: "))         //Entering Number in field
-    actual_message =
+    user_input = int(input("Enter only 2 digit number: "))      #EnteringNumber in field
+    t.send_keys(user_input)
+    actual_message = "Please enter at least 2 characters."
+    print ("pass")
 
     if (user_input > 9) and (user_input < 100):
         driver.find_element_by_id("vfb-4").click()
@@ -75,12 +78,14 @@ def verification():
     else:
         driver.find_element_by_id("vfb-4").click()
         driver.find_element_by_xpath(".//*[@id='item-vfb-2']/ul/li[1]/span/label[1]").text
+        assert ("Please enter at least 2 characters." in actual_message)
 
 
-
-a=ClearText()
+'''a=ClearText()
 b=CheckBoxes()
 c=RadioButtons()
 d=calender()
 e=URL()
-# f= DropDown()
+f= DropDown()'''
+
+h =verification()
