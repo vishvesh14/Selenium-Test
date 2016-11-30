@@ -1,5 +1,4 @@
 # __author__ = 'Bestla'
-import time
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import Select
@@ -68,9 +67,7 @@ dropdown_count= driver.find_element_by_tag_name("options")'''
 def verification():
     t = driver.find_element_by_xpath("//input[@id='vfb-3']").click()
     user_input = int(input("Enter only 2 digit number: "))      #EnteringNumber in field
-    t.send_keys(user_input)
     actual_message = "Please enter at least 2 characters."
-    print ("pass")
 
     if (user_input > 9) and (user_input < 100):
         driver.find_element_by_id("vfb-4").click()
@@ -79,6 +76,22 @@ def verification():
         driver.find_element_by_id("vfb-4").click()
         driver.find_element_by_xpath(".//*[@id='item-vfb-2']/ul/li[1]/span/label[1]").text
         assert ("Please enter at least 2 characters." in actual_message)
+        print ("fail")
+
+
+def NewWindow():
+
+    btn = driver.find_element_by_id("button1").click()
+
+    window_before = driver.window_handles[0]
+    window_after = driver.window_handles[1]
+    print("Test 1")
+
+    driver.switch_to.window(window_after)
+    driver.maximize_window()
+    print("test 2")
+    assert "Selenium Framework | Selenium, Cucumber, Ruby, Java et al." in driver.title
+    print ("test 3")
 
 
 '''a=ClearText()
@@ -86,6 +99,6 @@ b=CheckBoxes()
 c=RadioButtons()
 d=calender()
 e=URL()
-f= DropDown()'''
-
-h =verification()
+f= DropDown()
+h = verification()'''
+m = NewWindow()
