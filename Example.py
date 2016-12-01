@@ -94,11 +94,25 @@ def NewWindow():
     print ("test 3")
 
 
+def New_Message_Window():
+    btn = driver.find_element_by_xpath(".//*[@id='content']/div[2]/div[2]/div/div[1]/div/p[3]/button").click()
+    window_before = driver.window_handles[0]
+    window_after = driver.window_handles[1]
+    print("step 1")
+
+    driver.switch_to.window(window_after)
+    driver.maximize_window()
+    print("step 2")
+
+    ("This message window is only for viewing purposes" in selenium.page_source)
+    print("step 3")
+
 '''a=ClearText()
 b=CheckBoxes()
 c=RadioButtons()
 d=calender()
 e=URL()
 f= DropDown()
-h = verification()'''
-m = NewWindow()
+h = verification()
+m = NewWindow()'''
+n = New_Message_Window()
